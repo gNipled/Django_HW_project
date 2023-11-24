@@ -1,10 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mystore</title>
+    <link href="/static/catalog/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+    <div class="container-fluid gap-4">
+      <a class="navbar-brand text-white" href="/">Mystore</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarNav">
+        <ul class="navbar-nav gap-2">
+          <li class="nav-item">
+            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" aria-current="page" href="contacts">Contacts</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <p class="h1 text-center my-5">Contacts</p>
+<div class="row mt-5">
+  <div class="col-2"></div>
+  <div class="col-4">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Country</th>
+          <td>Japan/日本</td>
+        </tr>
+        <tr>
+          <th scope="row">Company Number</th>
+          <td>12311223335425</td>
+        </tr>
+        <tr>
+          <th scope="row">Address</th>
+          <td>埼玉県川口市長蔵2丁目</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-3">
+    <form method="post">
+        {% csrf_token %}
+      <div class="mb-3">
+        <label for="InputName" class="form-label">Your name</label>
+        <input class="form-control" id="InputName" name="InputName" aria-describedby="nameHelp">
+      </div>
+      <div class="mb-3">
+        <label for="InputEmail" class="form-label">Your email address</label>
+        <input type="email" class="form-control" id="InputEmail" name="InputEmail" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="InputMessage" class="form-label">Your message to us</label>
+        <textarea class="form-control" id="InputMessage" aria-describedby="messageHelp" name="InputMessage" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-light">Submit</button>
+    </form>
+  </div>
+  <div class="col-2"></div>
+</div>
+  <div class="row mt-5 border-top fixed-bottom">
+    <div class="col-3">
+      <p class="text-center mt-4 mb-0">Crutchdev</p>
+      <p class="text-center mt-0">© 2023</p>
+    </div>
+    <div class="col-3">
+      <nav class="nav flex-column">
+        <p class="text-center mt-4 mb-0">Categories</p>
+        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Some stuff</a></p>
+        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">More stuff</a></p>
+        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Some more stuff</a></p>
+        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Almost done</a></p>
+        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Last stuff</a></p>
+      </nav>
+    </div>
+    <div class="col-3">
+      <nav class="nav flex-column">
+        <p class="text-center mt-4 mb-0">More</p>
+        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Blog</a></p>
+      </nav>
+    </div>
+    <div class="col-3">
+      <nav class="nav flex-column">
+        <p class="text-center mt-4 mb-0">About</p>
+        <p class="text-center my-0"><a href="contacts" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Contacts</a></p>
+      </nav>
+    </div>
+  </div>
 
+<script src="/static/catalog/js/bootstrap.bundle.js"></script>
 </body>
 </html>
