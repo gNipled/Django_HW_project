@@ -27,6 +27,7 @@ class Product(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=30, verbose_name='name')
     description = models.TextField(verbose_name='description', **NULLABLE)
+    # created_at = models.DateTimeField(auto_now=True, verbose_name='created')
 
     def __str__(self):
         return f'{self.name}'
