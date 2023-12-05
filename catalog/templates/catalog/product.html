@@ -1,7 +1,12 @@
 {% extends 'catalog/base.html' %}
+{% load my_tags %}
 {% block content %}
 <div class="container">
   <div class="row">
+    <div class="text-center">
+<!--      <img src="{{ object.preview|mymedia }}" class="rounded" alt="...">-->
+      <img src="{% mediapath object.preview %}" class="rounded" alt="...">
+    </div>
     <h1> {{ object.name }}</h1>
     <p> {{ object.description }}</p>
   </div>

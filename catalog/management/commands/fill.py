@@ -19,24 +19,28 @@ class Command(BaseCommand):
             {
                 'name': 'Site',
                 'description': 'You could buy your own site! How cool is that?',
+                'preview': 'catalog/site.jpg',
                 'category': category_to_create[0],
                 'price': '69',
              },
             {
                 'name': 'Prebuild PC',
                 'description': 'Hey! It\'s Fing PC with unicorn puke allover it! You should buy that',
+                'preview': 'catalog/unicorn_puke.jpg',
                 'category': category_to_create[0],
                 'price': '420',
             },
             {
                 'name': 'Teach me Physics ',
                 'description': 'Hey, I could teach you some physics if you wont, I legally can do that',
+                'preview': 'catalog/physics.png',
                 'category': category_to_create[1],
                 'price': '20',
             },
             {
                 'name': 'Let\'s chat',
                 'description': 'Come to my twich, we can chat there!',
+                'preview': 'catalog/chating.jpg',
                 'category': category_to_create[1],
                 'price': '0',
             }
