@@ -7,54 +7,11 @@
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
-    <div class="container-fluid gap-4">
-      <a class="navbar-brand text-white"  href="/">Mystore</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse " id="navbarNav">
-        <ul class="navbar-nav gap-2">
-          <li class="nav-item">
-            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="contacts">Contacts</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  {% include 'catalog/includes/inc_main_menu.html' %}
     {% block content %}
     {% endblock %}
-  <div class="row mt-5 border-top fixed-bottom">
-    <div class="col-3">
-      <p class="text-center mt-4 mb-0">Crutchdev</p>
-      <p class="text-center mt-0">© 2023</p>
-    </div>
-    <div class="col-3">
-      <nav class="nav flex-column">
-        <p class="text-center mt-4 mb-0">Categories</p>
-        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Some stuff</a></p>
-        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">More stuff</a></p>
-        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Some more stuff</a></p>
-        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Almost done</a></p>
-        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Last stuff</a></p>
-      </nav>
-    </div>
-    <div class="col-3">
-      <nav class="nav flex-column">
-        <p class="text-center mt-4 mb-0">More</p>
-        <p class="text-center my-0"><a href="#" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Blog</a></p>
-      </nav>
-    </div>
-    <div class="col-3">
-      <nav class="nav flex-column">
-        <p class="text-center mt-4 mb-0">About</p>
-        <p class="text-center my-0"><a href="/contacts/" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Contacts</a></p>
-      </nav>
-    </div>
-  </div>
+  {% include 'catalog/includes/inc_bottom_menu.html' %}
+
 
 <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
 </body>
