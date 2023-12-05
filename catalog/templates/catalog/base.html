@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Mystore</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+</head>
+<body>
+  {% include 'catalog/includes/inc_main_menu.html' %}
+    {% block content %}
+    {% endblock %}
+  {% include 'catalog/includes/inc_bottom_menu.html' %}
+
+
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>
