@@ -12,3 +12,10 @@ def contacts(request):
         message = request.POST.get('InputMessage')
         print(f'{name} ({email}): {message}')
     return render(request, 'catalog/contacts.html')
+
+
+def product(request):
+    context = {
+
+    }
+    return render(request, 'catalog/product.html')
