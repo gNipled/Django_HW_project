@@ -39,11 +39,11 @@ class Category(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=100, verbose_name='title')
-    slug = models.CharField(max_length=80, verbose_name='slug')
+    slug = models.CharField(max_length=80, verbose_name='slug', **NULLABLE)
     content = models.TextField(verbose_name='content')
     preview = models.ImageField(upload_to='blog_img/', verbose_name='post preview', **NULLABLE)
     created = models.DateTimeField(auto_now_add=True, verbose_name='created')
-    is_published = models.BooleanField(verbose_name='published')
+    is_published = models.BooleanField(verbose_name='published', default=True)
     view_count = models.IntegerField(verbose_name='view count', default='0')
 
     def __str__(self):
