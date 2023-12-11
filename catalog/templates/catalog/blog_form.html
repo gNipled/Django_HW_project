@@ -1,0 +1,16 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+  <p class="h3 text-center mt-5">Heya! It's new blog</p>
+  <p class="text-center fs-5 mt-3 mb-5">You can shitpost here as long as you being decent human being</p>
+  <div class="row">
+   <div class="card">
+     <div class="card-body">
+       <form method="post">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="btn btn-light">Post</button>
+       </form>
+     </div>
+   </div>
+  </div>
+{% endblock %}

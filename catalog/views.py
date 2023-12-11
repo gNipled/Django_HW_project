@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 
-from catalog.models import Product, Category
+from catalog.models import Product, Category, Blog
 
 
 # def home(request):
@@ -35,3 +36,28 @@ def contacts(request):
 
 class ProductDetailView(DetailView):
     model = Product
+
+
+class BlogCreateView(CreateView):
+    model = Blog
+    fields = ('title', 'content', 'preview', 'is_published')
+    success_url = reverse_lazy('catalog:blog_list')
+
+
+class BlogListView(ListView):
+    model = Blog
+
+
+class BlogDetailView(DetailView):
+    model = Blog
+
+
+class BlogUpdateView(UpdateView):
+    model = Blog
+    fields = ('title', 'content', 'preview', 'is_published')
+    success_url = reverse_lazy('catalog:blog_post')
+
+
+class BlogDeleteView(DeleteView):
+    model = Blog
+    success_url = reverse_lazy('catalog:blog_list')

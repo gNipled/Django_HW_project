@@ -35,3 +35,20 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'category'
         verbose_name_plural = 'categories'
+
+
+class Blog(models.Model):
+    title = models.CharField(max_length=100, verbose_name='title')
+    slug = models.CharField(max_length=80, verbose_name='slug')
+    content = models.TextField(verbose_name='content')
+    preview = models.ImageField(upload_to='blog_img/', verbose_name='post preview', **NULLABLE)
+    created = models.DateTimeField(auto_now_add=True, verbose_name='created')
+    is_published = models.BooleanField(verbose_name='published')
+    view_count = models.IntegerField(verbose_name='view count', default='0')
+
+    def __str__(self):
+        return f'{self.title}, views: {self.view_count}'
+
+    class Meta:
+        verbose_name = 'post'
+        verbose_name_plural = 'posts'

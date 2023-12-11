@@ -1,0 +1,34 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+  <p class="h1 text-center mt-5">Heya! It's blog</p>
+  <p class="text-center fs-5 mt-3 mb-5">Sometimes I'm trying to be funny too hard, don't judge me, ok?</p>
+  <div class="row">
+    <div class="text-center">
+      <a href="{% url 'catalog:blog_create' %}" class="btn btn-light">Make new post</a>
+    </div>
+  </div>
+  <div class="row">
+    {% for object in object_list %}
+      {% if object.is_published %}
+        <div class="col-auto">
+          <div class="card w-70 mt-5 mb-5 ms-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title fs-3">{{ object.title|truncatechars:17 }}</h5>
+              <p> {{ object.content|truncatechars:200 }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'catalog:blog_post' object.pk %}"
+                     class="btn btn-light">View post</a>
+                  <a href="{% url 'catalog:blog_edit' object.pk %}"
+                     class="btn btn-light">Edit post</a>
+                  <a href="{% url 'catalog:blog_delete' object.pk %}"
+                     class="btn btn-light btn-outline-danger">Delete post</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}
