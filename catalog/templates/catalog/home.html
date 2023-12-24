@@ -9,9 +9,9 @@
           <div class="card-body">
             <h5 class="card-title fs-3">{{ object.name }}</h5>
             <p> {{ object.description|truncatechars:100 }}</p>
-            {% for version in object.version %}
+            {% for version in object.version_set.all %}
               {% if version.is_current %}
-                <p> { object.version_number }</p>
+                <p> {{ version.version_number }}</p>
               {% endif %}
             {% endfor%}
             <a href="{% url 'catalog:product' object.pk %}" class="btn btn-light">${{ object.price }}</a>
