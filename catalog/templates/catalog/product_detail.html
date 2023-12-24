@@ -14,4 +14,14 @@
     <button type="button" style="width: 10rem;" class="btn btn-light">${{ object.price }}</button>
   </div>
 </div>
+<div class="row">
+  <div class="col-3 m-5">
+    <div class="btn-group">
+      <a href="{% url 'catalog:product_update' object.pk %}"
+         class="btn btn-light">Edit product</a>
+      <a href="{% url 'catalog:product_delete' object.pk %}"
+         class="btn btn-light btn-outline-danger">Delete product</a>
+    </div>
+  </div>
+</div>
 {% endblock %}

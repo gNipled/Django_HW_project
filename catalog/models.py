@@ -52,3 +52,17 @@ class Blog(models.Model):
     class Meta:
         verbose_name = 'post'
         verbose_name_plural = 'posts'
+
+
+class Version(models.Model):
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.CASCADE,
+    )
+    version_number = models.CharField(max_length=30, verbose_name='version number')
+    version_name = models.CharField(max_length=200, verbose_name='version name')
+    is_current = models.BooleanField(verbose_name='current version', default=True)
+
+    class Meta:
+        verbose_name = 'version'
+        verbose_name_plural = 'versions'
