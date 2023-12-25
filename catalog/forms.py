@@ -15,7 +15,7 @@ class ProductForm(FormStyleMixin, forms.ModelForm):
 
     class Meta:
         model = Product
-        exclude = ('creation_date', 'change_date')
+        exclude = ('creation_date', 'change_date', 'created_by')
 
     def clean_name(self):
         dame = ('казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар')
