@@ -30,14 +30,14 @@ class RegisterView(CreateView):
     def form_valid(self, form):
         new_user = form.save()
         new_user.verification_key = ''.join([str(random.randint(0, 9)) for _ in range(15)])
+        new_user.save()
         send_mail(
             subject='Hello, little friend',
             message=f'You\'ve been registered, to verify your email, follow that link: '
-                    f'http://127.0.0.1:8000/users/verify/{self.request.user.verification_key}',
+                    f'http://127.0.0.1:8000/users/verify/{new_user.verification_key}',
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[new_user.email]
         )
-        form.save()
         return super().form_valid(form)
 
 
@@ -63,7 +63,7 @@ def generate_new_password(request):
     return redirect(reverse('catalog:home'))
 
 
-def verify_user_mail(uid):
+def verify_user_mail(request, uid):
     for user in User.objects.all():
         if user.verification_key == uid:
             user.is_active = True

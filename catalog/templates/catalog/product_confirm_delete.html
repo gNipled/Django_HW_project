@@ -1,5 +1,6 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
+{% if user.is_authenticated %}
   <p class="h3 text-center mt-5">Stop right there you criminal scam!</p>
   <p class="text-center fs-5 mt-3 mb-5">
     You trying to delete product {{ object.title }}.
@@ -21,4 +22,7 @@
      </div>
    </div>
   </div>
+{% else %}
+  <p class="text-center fs-5 mt-3 mb-5">I don't know you, go away.</p>
+{% endif %}
 {% endblock %}

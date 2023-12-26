@@ -22,9 +22,11 @@
     {% endfor %}
   </div>
   </div>
+{% if user.is_authenticated %}
   <div class="row">
     <div class="col-12 mt-5">
       <a class="btn btn-light" href="{% url 'catalog:product_create' %}"> Create new product </a>
     </div>
   </div>
+{% endif %}
 {% endblock %}
