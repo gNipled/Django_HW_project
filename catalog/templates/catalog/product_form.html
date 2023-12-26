@@ -1,5 +1,6 @@
 {% extends 'catalog/base.html' %}
 {% block content %}
+{% if user.is_authenticated %}
   <form method="post" class="row">
     <div class="col-6">
       <div class="card">
@@ -23,4 +24,7 @@
       </div>
     </div>
   </form>
+{% else %}
+  <p class="text-center fs-5 mt-3 mb-5">I don't know you, go away.</p>
+{% endif %}
 {% endblock %}

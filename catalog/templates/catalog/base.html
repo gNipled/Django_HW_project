@@ -3,15 +3,18 @@
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mystore</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
 </head>
 <body>
+<div class="container-xl">
   {% include 'catalog/includes/inc_main_menu.html' %}
     {% block content %}
     {% endblock %}
   {% include 'catalog/includes/inc_bottom_menu.html' %}
-
+</div>
 
 <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
 </body>

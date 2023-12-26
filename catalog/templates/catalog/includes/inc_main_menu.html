@@ -16,6 +16,21 @@
           <li class="nav-item">
             <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{% url 'catalog:blog_list' %}">Blog</a>
           </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{% url 'users:logout' %}">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{% url 'users:profile' %}">Profile</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{% url 'users:register' %}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{% url 'users:login' %}">Login</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </div>

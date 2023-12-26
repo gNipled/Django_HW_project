@@ -3,26 +3,30 @@
   <p class="h1 text-center mt-5">It's Mystore!</p>
   <p class="text-center fs-5 mt-3 mb-5">At first I'll just try to do something here, wait for a bit for a content.</p>
   <div class="row">
+    <div class="card-group">
     {% for object in object_list %}
-      <div class="col-auto">
-        <div class="card w-70 mb-5 ms-3">
+        <div class="card h-90" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title fs-3">{{ object.name }}</h5>
             <p> {{ object.description|truncatechars:100 }}</p>
-            {% for version in object.version_set.all %}
-              {% if version.is_current %}
-                <p> {{ version.version_number }}</p>
-              {% endif %}
-            {% endfor%}
             <a href="{% url 'catalog:product' object.pk %}" class="btn btn-light">${{ object.price }}</a>
           </div>
+          {% for version in object.version_set.all %}
+            {% if version.is_current %}
+              <div class="card-footer">
+                <small class="text-body-secondary">{{ version.version_number }}</small>
+              </div>
+            {% endif %}
+          {% endfor%}
         </div>
-      </div>
     {% endfor %}
   </div>
+  </div>
+{% if user.is_authenticated %}
   <div class="row">
-    <div class="col-12 mb-5">
+    <div class="col-12 mt-5">
       <a class="btn btn-light" href="{% url 'catalog:product_create' %}"> Create new product </a>
     </div>
   </div>
+{% endif %}
 {% endblock %}
