@@ -15,7 +15,7 @@ class ProductForm(FormStyleMixin, forms.ModelForm):
 
     class Meta:
         model = Product
-        exclude = ('creation_date', 'change_date', 'created_by')
+        exclude = ('creation_date', 'change_date', 'created_by', 'is_published')
 
     def clean_name(self):
         dame = ('казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар')
@@ -32,6 +32,16 @@ class ProductForm(FormStyleMixin, forms.ModelForm):
             if word in cleaned_data.lower():
                 raise forms.ValidationError('Please don\'t sell bullshit here')
         return cleaned_data
+
+
+class ModerProductForm(FormStyleMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["is_published"].widget.attrs.update({"class": "form-check"})
+
+    class Meta:
+        model = Product
+        fields = ('description', 'is_published', 'category')
 
 
 class VersionForm(FormStyleMixin, forms.ModelForm):
