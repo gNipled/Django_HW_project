@@ -8,10 +8,15 @@
         <div class="card-body">
           {% csrf_token %}
           {{ form.as_p }}
+          {% if object.is_exists %}
+          <button type="submit" class="btn btn-light">Confirm change</button>
+          {% else %}
           <button type="submit" class="btn btn-light">Add</button>
+          {% endif %}
         </div>
       </div>
     </div>
+    {% if perms.catalog.change_version %}
     <div class="col-6">
       <div class="card">
         <div class="card-header">Version</div>
@@ -23,6 +28,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
   </form>
 {% else %}
   <p class="text-center fs-5 mt-3 mb-5">I don't know you, go away.</p>

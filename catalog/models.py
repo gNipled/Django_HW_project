@@ -13,6 +13,7 @@ class Product(models.Model):
         'Category',
         on_delete=models.CASCADE,
     )
+    is_published = models.BooleanField(default=False, verbose_name='published')
     price = models.FloatField(verbose_name='price per unit')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='created')
     change_date = models.DateTimeField(auto_now=True, verbose_name='last Modified')
@@ -24,6 +25,20 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'product'
         verbose_name_plural = 'products'
+        permissions = [
+            (
+                'set_published',
+                'Can publish posts'
+            ),
+            (
+                'change_description',
+                'Can change description'
+            ),
+            (
+                'change_category',
+                'Can change category'
+            )
+        ]
 
 
 class Category(models.Model):

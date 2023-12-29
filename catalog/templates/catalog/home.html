@@ -5,6 +5,7 @@
   <div class="row">
     <div class="card-group">
     {% for object in object_list %}
+      {% if object.is_published or perms.catalog.change_product %}
         <div class="card h-90" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title fs-3">{{ object.name }}</h5>
@@ -19,6 +20,7 @@
             {% endif %}
           {% endfor%}
         </div>
+      {% endif %}
     {% endfor %}
   </div>
   </div>
