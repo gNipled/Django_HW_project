@@ -23,6 +23,9 @@
           <li class="nav-item">
             <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{% url 'users:profile' %}">Profile</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{% url 'catalog:category' %}">Categories</a>
+          </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link text-white d-inline-flex focus-ring py-1 px-2 text-decoration-none border rounded-2" href="{% url 'users:register' %}">Register</a>

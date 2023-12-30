@@ -1,0 +1,17 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+  <p class="h1 text-center mt-5">It's Mystore!</p>
+  <p class="text-center fs-5 mt-3 mb-5">At first I'll just try to do something here, wait for a bit for a content.</p>
+  <div class="row">
+    <div class="card-group">
+    {% for object in categories %}
+        <div class="card h-90" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title fs-3">{{ object.name }}</h5>
+            <p> {{ object.description|truncatechars:100 }}</p>
+           </div>
+        </div>
+    {% endfor %}
+  </div>
+  </div>
+{% endblock %}

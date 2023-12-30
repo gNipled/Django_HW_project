@@ -12,15 +12,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
-
-POSTGRES_PASS = os.getenv('PG_ADMIN_PASSWORD')
-EMAIL_USER = os.getenv('MAIL_FOR_APPS')
-EMAIL_PASSWORD = os.getenv('MAIL_FOR_APPS_PASS')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR/'.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -87,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'db_django_hw',
         'USER': 'postgres',
-        'PASSWORD': POSTGRES_PASS,
+        'PASSWORD': os.getenv('POSTGRES_PASS'),
     }
 }
 
@@ -150,6 +148,15 @@ LOGIN_URL = 'login'
 
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = '465'
-EMAIL_HOST_USER = EMAIL_USER
-EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
+EMAIL_HOST_USER = os.getenv('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_USE_SSL = True
+
+CACHE_ENABLED = os.getenv('CACHE_ENABLED') == 'True'
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": os.getenv('CACHE_LOCATION'),
+    }
+}

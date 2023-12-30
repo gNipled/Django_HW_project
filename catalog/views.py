@@ -1,4 +1,6 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.conf import settings
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.core.cache import cache
 from django.forms import inlineformset_factory
 from django.http import Http404
 from django.shortcuts import render
@@ -8,6 +10,7 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 
 from catalog.forms import ProductForm, VersionForm, ModerProductForm
 from catalog.models import Product, Category, Blog, Version
+from catalog.services import get_categories
 
 
 # def home(request):
@@ -161,3 +164,15 @@ class BlogUpdateView(UpdateView):
 class BlogDeleteView(DeleteView):
     model = Blog
     success_url = reverse_lazy('catalog:blog_list')
+
+
+class CategoryListView(LoginRequiredMixin, ListView):
+    model = Category
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        contex_data = super().get_context_data(**kwargs)
+        contex_data['categories'] = get_categories
+        return contex_data
+
+
+
